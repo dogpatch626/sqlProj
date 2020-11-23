@@ -71,3 +71,32 @@ CREATE TABLE `Patents` (
   
   CONSTRAINT `db_app_id` FOREIGN KEY (`application_id`) REFERENCES `applications` (`application_id`) ON UPDATE CASCADE
 )
+
+--Funding 
+CREATE TABLE `Funding` (
+  `Funding_ID` bigint(11) NOT NULL, 
+  `Application_ID` int NOT NULL,
+  `RoundType` int NOT NULL, 
+  `Incestor_ID` int NOT NULL,
+  `Number_of_Shares` int NOT NULL,
+  `Capital_Investment` bigint NOT NULL,
+  `Ownership_%` int NOT NULL, 
+  PRIMARY KEY (`Funding_ID`), 
+  KEY `db_app_id` (`Application_id`), 
+  )
+  
+  -- States
+  CREATE TABLE `States` (
+    `State_ID` bigint(11) NOT NULL, 
+    `Name` varchar NOT NULL, 
+    `Abbreviation` varchar NOT NULL, 
+    PRIMARY KEY (`State_ID`) 
+    KEY `db_app_id` (`State_ID`),
+    
+    CONSTRAINT `db_app_id` PRIVATE KEY (`State_ID`) REFERENCES `Address` (`State_ID`) ON UPDATE CASCADE
+ )
+ 
+ 
+    
+    
+  
