@@ -1,5 +1,5 @@
 CREATE TABLE `applications` (
-  `application_id` bigint(8) NOT NULL,
+  `Application_ID` bigint(8) NOT NULL,
   `First_Name` varchar(50) NOT NULL,
   `Middle_Name` varchar(50) NOT NULL,
   `Last_Name` varchar(50) NOT NULL,
@@ -10,7 +10,7 @@ CREATE TABLE `applications` (
   `Entity_Type` NOT NULL,
   `Company_Description` varchar(200) NOT NULL,
   
-  PRIMARY KEY (`application_id`)
+  PRIMARY KEY (`Application_ID`)
 );
 
 --  create applications 
@@ -24,11 +24,11 @@ CREATE TABLE `Certifications_Financials` (
   `Company_Clearence_(DCSA)` int NOT NULL,
   `SF-328_Certification` varchar(11) NOT NULL,
   `CMMC_Certificate` bool NOT NULL, 
-  `application_id` bigint(8) NOT NULL,
+  `Application_ID` bigint(8) NOT NULL,
   PRIMARY KEY (`Cert&Finance_ID`),
-  KEY `db_app_id` (`application_id`),
+  KEY `db_app_id` (`Application_ID`),
   
-  CONSTRAINT `db_app_id` FOREIGN KEY (`application_id`) REFERENCES `applications` (`application_id`) ON UPDATE CASCADE
+  CONSTRAINT `db_app_id` FOREIGN KEY (`Application_ID`) REFERENCES `applications` (`Application_ID`) ON UPDATE CASCADE
 )
 
 CREATE TABLE `Certifications_Financials` (
@@ -38,38 +38,38 @@ CREATE TABLE `Certifications_Financials` (
   `Company_Clearence_(DCSA)` int NOT NULL,
   `SF-328_Certification` varchar(11) NOT NULL,
   `CMMC_Certificate` bool NOT NULL, 
-  `application_id` bigint(8) NOT NULL,
+  `Application_ID` bigint(8) NOT NULL,
   PRIMARY KEY (`Cert&Finance_ID`),
-  KEY `db_app_id` (`application_id`),
+  KEY `db_app_id` (`Application_ID`),
   
-  CONSTRAINT `db_app_id` FOREIGN KEY (`application_id`) REFERENCES `applications` (`application_id`) ON UPDATE CASCADE
+  CONSTRAINT `db_app_id` FOREIGN KEY (`Application_ID`) REFERENCES `applications` (`Application_ID`) ON UPDATE CASCADE
 )
 
 --address
 CREATE TABLE `Address` (
   `Address_ID` bigint(11) NOT NULL,
-  `application_id` bigint(8) NOT NULL,
+  `Application_ID` bigint(8) NOT NULL,
   `Address` varchar NOT NULL,
   `Unit_Number` int NOT NULL,
   `State_ID` varchar(11) NOT NULL,
   `ZIP_CODE` int NOT NULL, 
   PRIMARY KEY (`Address_ID`),
-  KEY `db_app_id` (`application_id`),
+  KEY `db_app_id` (`Application_ID`),
   --FK STATE_ID?
-  CONSTRAINT `db_app_id` FOREIGN KEY (`application_id`) REFERENCES `applications` (`application_id`) ON UPDATE CASCADE
+  CONSTRAINT `db_app_id` FOREIGN KEY (`Application_ID`) REFERENCES `applications` (`Application_ID`) ON UPDATE CASCADE
 )
 
 --Patents
 CREATE TABLE `Patents` (
   `Patent_ID` int NOT NULL,
-  `application_id` bigint(8) NOT NULL,
+  `Application_ID` bigint(8) NOT NULL,
   `Patent_Name` varchar NOT NULL,
   `Patent_Number` int NOT NULL,
   `Country_ID` varchar NOT NULL,
   PRIMARY KEY (`Patent_ID`),
-  KEY `db_app_id` (`application_id`),
+  KEY `db_app_id` (`Application_ID`),
   
-  CONSTRAINT `db_app_id` FOREIGN KEY (`application_id`) REFERENCES `applications` (`application_id`) ON UPDATE CASCADE
+  CONSTRAINT `db_app_id` FOREIGN KEY (`Application_ID`) REFERENCES `applications` (`Application_ID`) ON UPDATE CASCADE
 )
 
 --Funding 
@@ -82,7 +82,7 @@ CREATE TABLE `Funding` (
   `Capital_Investment` bigint NOT NULL,
   `Ownership_%` int NOT NULL, 
   PRIMARY KEY (`Funding_ID`), 
-  KEY `db_app_id` (`Application_id`), 
+  KEY `db_app_id` (`Application_ID`), 
   )
   
   -- States
