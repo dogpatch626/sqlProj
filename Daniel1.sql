@@ -96,7 +96,43 @@ CREATE TABLE `Funding` (
     CONSTRAINT `db_app_id` PRIVATE KEY (`State_ID`) REFERENCES `Address` (`State_ID`) ON UPDATE CASCADE
  )
  
- 
+ -- Company Information 
+CREATE TABLE `Company_Information` (
+  `EID_ID` int(9) NOT NULL, 
+  `Company_Name` varchar NOT NULL,
+  `Entity_Type` varchar NOT NULL, 
+  `Company_Description` varchar NOT NULL,
+  `Contact_Phone` int NOT NULL,
+  `Contact_Email` varchar NOT NULL, 
+  PRIMARY KEY (`Company_Information`), 
+  KEY `db_app_id` (`EID_ID`), 
+  )
     
+ --Country 
+ Create TABLE `Country_ID` (
+   `Country_ID` int(9) NOT NULL, 
+   `Name` varchar NOT NULL,
+   `Abbreviation` char NOT NULL, 
+   PRIMARY KEY (`Country_ID`),
+   KEY `db_app_id` (Country_ID),
+   )
+   
+  --Application
+  CREATE TABLE `Application` (
+    `Application_ID` bigint(11) NOT NULL,
+    `First_Name` varchar NOT NULL,
+    `Middle_Name` varchar NOT NULL,
+    `Last_Name` varchar NOT NULL,
+    `Phone_Number` int(9) NOT NULL,
+    `Email` varchar NOT NULL,
+    `Company_Name` varchar NOT NULL,
+    `EIN_ID` int(9) NOT NULL,
+    `Entity_Type` int(9) NOT NULL,
+    `Company_Description` varchar NOT NULL,
+    `Certification & Financials` Bool NOT NULLm
+    PRIMARY KEY (Application_ID),
+    KEY `db_app_id` (Application_ID)
+    )
+   
     
   
