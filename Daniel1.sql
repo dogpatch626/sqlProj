@@ -1,14 +1,14 @@
 --  create applications
 CREATE TABLE `applications` (
-  `Application_ID` 		bigint(8) 		NOT NULL,
-  `First_Name` 			varchar(50) 	NOT NULL,
-  `Middle_Name` 		varchar(50) 	NOT NULL,
-  `Last_Name` 			varchar(50) 	NOT NULL,
-  `Phone_number` 		int(11) 		NOT NULL,
-  `EMAIL` 				varchar(50) 	NOT NULL,
-  `Company_Name` 		varchar(50) 	NOT NULL,
-  `EIN` 				int(11) 		NOT NULL,
-  `Entity_Type` 		int(11)			NOT NULL,
+  `Application_ID` 	bigint(8) 		    NOT NULL,
+  `First_Name` 			varchar(50) 	    NOT NULL,
+  `Middle_Name` 		varchar(50)     	NOT NULL,
+  `Last_Name` 			varchar(50)     	NOT NULL,
+  `Phone_number` 		int(11) 		      NOT NULL,
+  `EMAIL` 				  varchar(50) 	    NOT NULL,
+  `Company_Name` 		varchar(50)     	NOT NULL,
+  `EIN` 				    int(11) 	  	    NOT NULL,
+  `Entity_Type` 		int(11)			      NOT NULL,
   `Company_Description` varchar(200) 	NOT NULL,
   
   PRIMARY KEY (`Application_ID`)
