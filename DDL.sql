@@ -1,0 +1,24 @@
+
+SET FOREIGN_KEY_CHECKS = 0;
+DROP TABLE IF EXISTS Application;
+DROP TABLE IF EXISTS certifications_financials;
+DROP TABLE IF EXISTS company_information;
+DROP TABLE IF EXISTS company_sector;
+DROP TABLE IF EXISTS company_subsector;
+DROP TABLE IF EXISTS country;
+DROP TABLE IF EXISTS customer;
+DROP TABLE IF EXISTS cyber_security_clearence;
+DROP TABLE IF EXISTS cyber_security_questions;
+DROP TABLE IF EXISTS foreign_associates;
+DROP TABLE IF EXISTS funding;
+DROP TABLE IF EXISTS imported_materials;
+DROP TABLE IF EXISTS investors;
+DROP TABLE IF EXISTS material;
+DROP TABLE IF EXISTS naics_codes;
+DROP TABLE IF EXISTS negative_regulatory_actionsDROP TABLE IF EXISTS CASCADE CONSTRAINTS;
+DROP TABLE IF EXISTS patents;
+DROP TABLE IF EXISTS revenue;
+DROP TABLE IF EXISTS sectors;
+DROP TABLE IF EXISTS states;
+DROP TABLE IF EXISTS subsectors;
+SET FOREIGN_KEY_CHECKS = 1;
