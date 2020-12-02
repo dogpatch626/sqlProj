@@ -21,6 +21,14 @@ delete from sectors;
 delete from states;
 delete from subsectors;
 
+ALTER Table foreign_associates DROP COLUMN Type_Foreign;
+describe foreign_associates;
+ALTER Table foreign_associates ADD COLUMN Type_Foreign varchar(25);
+ALTER Table foreign_associates ADD COLUMN Type_Foreign22 bigint(11) Default "12121212";
+ALTER Table foreign_associates ADD Constraint Foreign_Associates_FK3 FOREIGN KEY (Type_Foreign22) REFERENCES States(State_ID);
+ALTER Table foreign_associates Drop Constraint Foreign_Associates_FK3;
+ALTER Table foreign_associates DROP COLUMN Type_Foreign22;
+
 insert into States (Abbreviation,Name) values ('AL','Alabama');
 insert into States (Abbreviation,Name) values ('AK','Alaska');
 insert into States (Abbreviation,Name) values ('AS','American Samoa');
