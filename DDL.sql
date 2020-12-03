@@ -26,15 +26,19 @@ DROP TABLE IF EXISTS States;
 DROP TABLE IF EXISTS Subsectors;
 SET FOREIGN_KEY_CHECKS = 1;
 
+DROP DATABASE CSCI362;
+CREATE DATABASE IF NOT EXISTS CSCI362;
+USE CSCI362;
+
 CREATE TABLE States(
         State_ID bigint(11) NOT NULL AUTO_INCREMENT, 
-        Abbreviation varchar(20) NOT NULL,
-        Name varchar(20) NOT NULL,
+        Abbreviation varchar(3) NOT NULL,
+        Name varchar(50) NOT NULL,
 CONSTRAINT States_PK PRIMARY KEY(State_ID));
 
 CREATE TABLE Cyber_Security_Questions(
-        Questions_ID int NOT NULL,
-        Question varchar(200) NOT NULL,
+        Questions_ID varchar(5) NOT NULL,
+        Question varchar(500) NOT NULL,
 CONSTRAINT Cyber_Security_Questions_PK PRIMARY KEY(Questions_ID));
 
 CREATE TABLE CUSTOMER(
@@ -70,19 +74,19 @@ CONSTRAINT Company_Information_FK FOREIGN KEY (Application_ID) REFERENCES Applic
 
 CREATE TABLE Certifications_Financials (
         Cert_Financials_ID bigint(11) NOT NULL,
-        Tax_Records_7Years bigint(11) NOT NULL,
-        Company_Felonies int(11) NOT NULL,
-        Company_Clearence_DCSA int NOT NULL,
-        SF328_Certification varchar(11) NOT NULL,
-        CMMC_Certificate bool NOT NULL, 
+        Tax_Records_7Years varchar(4) NOT NULL Check (Tax_Records_7Years IN ('YES','NO')),
+        Company_Felonies varchar(4) NOT NULL Check (Company_Felonies IN ('YES','NO')),
+        Company_Clearence_DCSA varchar(4) NOT NULL Check (Company_Clearence_DCSA IN ('YES','NO')),
+        SF328_Certification varchar(4) NOT NULL Check (SF328_Certification IN ('YES','NO')),
+        CMMC_Certificate varchar(4) NOT NULL Check (CMMC_Certificate IN ('YES','NO')), 
         Application_ID bigint(8) NOT NULL,
 CONSTRAINT Certifications_Financials_PK PRIMARY KEY (Cert_Financials_ID),
 CONSTRAINT Certifications_Financials_FK FOREIGN KEY (Application_ID) REFERENCES Application(Application_ID) ON UPDATE CASCADE);
 
 CREATE TABLE Country (
         Country_ID int(9) NOT NULL AUTO_INCREMENT,
-        Abbreviation varchar(2) NOT NULL,
-        Name varchar(25) NOT NULL,
+        Abbreviation varchar(3) NOT NULL,
+        Name varchar(50) NOT NULL,
 CONSTRAINT Country_PK PRIMARY KEY (Country_ID));
 
 CREATE TABLE Address (
@@ -108,12 +112,12 @@ CONSTRAINT Patents_FK2 FOREIGN KEY (Country_ID) REFERENCES Country(Country_ID) O
 
 CREATE TABLE Sectors(
         Sector_ID int NOT NULL AUTO_INCREMENT,
-        Sector_Name varchar(25) NOT NULL,
+        Sector_Name varchar(80) NOT NULL,
 CONSTRAINT Sectors_PK PRIMARY KEY(Sector_ID));
 
 CREATE TABLE Subsectors(
         Subsector_ID varchar(25) NOT NULL,
-        Subsector_Name varchar(25),
+        Subsector_Name varchar(200) NOT NULL,
 CONSTRAINT Subsectors_PK PRIMARY KEY(Subsector_ID));
 
 CREATE TABLE Company_Sector (
@@ -150,7 +154,7 @@ CONSTRAINT NAICS_Codes_FK FOREIGN KEY (Application_ID) REFERENCES Application(Ap
 
 CREATE TABLE Cyber_Security_Clearence(
         Application_ID bigint(8) NOT NULL,
-        Questions_ID int NOT NULL,
+        Questions_ID varchar(5) NOT NULL,
         Administrative_Holds bool,
         Answers bool,
 CONSTRAINT Cyber_Security_Clearence_PK PRIMARY KEY (Application_ID,Questions_ID),
