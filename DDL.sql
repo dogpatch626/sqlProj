@@ -80,10 +80,10 @@ CONSTRAINT Certifications_Financials_PK PRIMARY KEY (Cert_Financials_ID),
 CONSTRAINT Certifications_Financials_FK FOREIGN KEY (Application_ID) REFERENCES Application(Application_ID) ON UPDATE CASCADE);
 
 CREATE TABLE Country (
-        Country_ID int(9) NOT NULL, 
+        Country_ID int(9) NOT NULL AUTO_INCREMENT,
+        Abbreviation varchar(2) NOT NULL,
         Name varchar(25) NOT NULL,
-        Abbreviation char NOT NULL, 
-        Application_ID bigint(8) NOT NULL,
+        Application_ID bigint(8),
 CONSTRAINT Country_PK PRIMARY KEY (Country_ID),
 CONSTRAINT Country_FK FOREIGN KEY (Application_ID) REFERENCES Application(Application_ID) ON UPDATE CASCADE);
 
