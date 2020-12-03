@@ -1,6 +1,3 @@
-SET LINESIZE 500;
-SET PAGESIZE 200;
-
 SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS Address;
 DROP TABLE IF EXISTS Application;
@@ -50,9 +47,9 @@ CONSTRAINT CUSTOMER_PK PRIMARY KEY(Customer_ID));
 CREATE TABLE Application (
         Application_ID bigint(8) NOT NULL,
         First_Name varchar(50) NOT NULL,
-        Middle_Name varchar(50) NOT NULL,
+        Middle_Name varchar(50),
         Last_Name varchar(50) NOT NULL,
-        Phone_Number int(11) NOT NULL,
+        Phone_Number LONGBLOB NOT NULL,
         Email varchar(50) NOT NULL,
         Company_Name varchar(50) NOT NULL,
         EIN_ID int(11) NOT NULL,
@@ -66,7 +63,7 @@ CREATE TABLE Company_Information (
         Company_Name varchar(50) NOT NULL,
         Entity_Type varchar(30) Check (Entity_Type IN ('C-CORP','S-CORP', 'B-CORP', 'Limited Liability Partnership', 'Limited Liability Company')), 
         Company_Description varchar(200) NOT NULL,
-        Contact_Phone int NOT NULL,
+        Contact_Phone LONGBLOB NOT NULL,
         Contact_Email varchar(20) NOT NULL, 
         Application_ID bigint(8) NOT NULL,
 CONSTRAINT Company_Information_PK PRIMARY KEY (EID_ID),
@@ -90,10 +87,10 @@ CREATE TABLE Country (
 CONSTRAINT Country_PK PRIMARY KEY (Country_ID));
 
 CREATE TABLE Address (
-        Address_ID bigint(11) NOT NULL,
+        Address_ID bigint(11) NOT NULL AUTO_INCREMENT,
         Application_ID bigint(8) NOT NULL,
-        Address varchar(11) NOT NULL,
-        Unit_Number int NOT NULL,
+        Address varchar(100) NOT NULL,
+        Unit_Number int,
         State_ID bigint(11) NOT NULL,
         ZIP_CODE int NOT NULL, 
 CONSTRAINT Address_PK PRIMARY KEY (Address_ID),
@@ -158,8 +155,8 @@ CREATE TABLE Cyber_Security_Clearence(
         Administrative_Holds bool,
         Answers bool,
 CONSTRAINT Cyber_Security_Clearence_PK PRIMARY KEY (Application_ID,Questions_ID),
-CONSTRAINT Cyber_Security_Clearence_FK1 FOREIGN KEY (Application_ID) REFERENCES Application(Application_ID) ON UPDATE CASCADE,
-CONSTRAINT Cyber_Security_Clearence_FK2 FOREIGN KEY (Questions_ID) REFERENCES Cyber_Security_Questions(Questions_ID) ON UPDATE CASCADE);
+CONSTRAINT Cyber_Security_Clearence_FK1 FOREIGN KEY (Application_ID) REFERENCES Application(Application_ID),
+CONSTRAINT Cyber_Security_Clearence_FK2 FOREIGN KEY (Questions_ID) REFERENCES Cyber_Security_Questions(Questions_ID));
 
 CREATE TABLE Foreign_Associates(
         Fassociate_ID int NOT NULL,
