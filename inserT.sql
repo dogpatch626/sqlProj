@@ -51,6 +51,7 @@ insert into Naics_codes (Codes,Application_ID) values (211130,4321) ;
 insert into Patents (Patent_ID, Application_ID, Patent_Name, Patent_Number, Country_ID) values (0000126, 4321, "Nano Bot", 1, 231);
 insert into Revenue (Customer_ID, Application_ID, Country_ID, Annual_Revenue) values (4, 4321, 231, 1000000);
 
+
 insert into Address (Application_ID, Address, State_ID,ZIP_CODE) values(4321, ' 4 Pennsylvania Plaza', 37 ,10001);
 insert into Company_subsector (Sector_ID, Subsector_ID, PrimaryBool2, Application_ID) values (10, '6.i', 1 ,4321);
 insert into Negative_regulatory_actions (Action_ID, Application_ID, Case_Number) values(4, 4321, 101);
