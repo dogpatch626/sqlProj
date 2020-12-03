@@ -1,0 +1,17 @@
+insert into Application (Application_ID,First_Name,Last_Name,Phone_Number,Email,Company_Name,EIN_ID,Entity_type,Company_Description,Certifications_financials_ID )    ;
+insert into Address     ;
+insert into Cyber_security_clearence      ;
+insert into Certifications_financials     ;
+insert into Company_information     ;
+insert into Company_sector     ;
+insert into Company_subsector     ;
+insert into Customer     ; 
+insert into Foreign_associates     ;
+insert into Funding     ;
+insert into Imported_materials     ;
+insert into Investors     ;
+insert into Material     ; 
+insert into Naics_codes     ;
+insert into Negative_regulatory_actions     ;
+insert into Patents     ;
+insert into Revenue     ;
