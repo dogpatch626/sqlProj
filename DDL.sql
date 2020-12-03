@@ -34,7 +34,7 @@ CONSTRAINT States_PK PRIMARY KEY(State_ID));
 
 CREATE TABLE Cyber_Security_Questions(
         Questions_ID int NOT NULL,
-        Answers varchar(200) NOT NULL,
+        Question varchar(200) NOT NULL,
 CONSTRAINT Cyber_Security_Questions_PK PRIMARY KEY(Questions_ID));
 
 CREATE TABLE CUSTOMER(
@@ -83,9 +83,7 @@ CREATE TABLE Country (
         Country_ID int(9) NOT NULL AUTO_INCREMENT,
         Abbreviation varchar(2) NOT NULL,
         Name varchar(25) NOT NULL,
-        Application_ID bigint(8),
-CONSTRAINT Country_PK PRIMARY KEY (Country_ID),
-CONSTRAINT Country_FK FOREIGN KEY (Application_ID) REFERENCES Application(Application_ID) ON UPDATE CASCADE);
+CONSTRAINT Country_PK PRIMARY KEY (Country_ID));
 
 CREATE TABLE Address (
         Address_ID bigint(11) NOT NULL,
@@ -109,13 +107,13 @@ CONSTRAINT Patents_FK1 FOREIGN KEY (Application_ID) REFERENCES Application(Appli
 CONSTRAINT Patents_FK2 FOREIGN KEY (Country_ID) REFERENCES Country(Country_ID) ON UPDATE CASCADE);
 
 CREATE TABLE Sectors(
-        Sector_ID int NOT NULL,
-        Sector_Name char,
+        Sector_ID int NOT NULL AUTO_INCREMENT,
+        Sector_Name varchar(25) NOT NULL,
 CONSTRAINT Sectors_PK PRIMARY KEY(Sector_ID));
 
 CREATE TABLE Subsectors(
-        Subsector_ID int,
-        Subsector_Name char,
+        Subsector_ID varchar(25) NOT NULL,
+        Subsector_Name varchar(25),
 CONSTRAINT Subsectors_PK PRIMARY KEY(Subsector_ID));
 
 CREATE TABLE Company_Sector (
@@ -129,7 +127,7 @@ CONSTRAINT Company_Sector_FK2 FOREIGN KEY (Application_ID) REFERENCES Applicatio
 
 CREATE TABLE Company_Subsector(
         Sector_ID int NOT NULL,
-        Subsector_ID int,
+        Subsector_ID varchar(25) NOT NULL,
         PrimaryBool2 bool,
         Application_ID bigint(8),
 CONSTRAINT Company_Subsector_PK PRIMARY KEY (Subsector_ID,Sector_ID,Application_ID),
