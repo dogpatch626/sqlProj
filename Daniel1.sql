@@ -31,19 +31,7 @@ CREATE TABLE `Certifications_Financials` (
   CONSTRAINT `db_app_id` FOREIGN KEY (`Application_ID`) REFERENCES `applications` (`Application_ID`) ON UPDATE CASCADE
 )
 
-CREATE TABLE `Certifications_Financials` (
-  `Cert&Finance_ID` bigint(11) NOT NULL,
-  `Tax_Records(7Years)` bigint(11) NOT NULL,
-  `Company_Felonies` int NOT NULL,
-  `Company_Clearence_(DCSA)` int NOT NULL,
-  `SF-328_Certification` varchar(11) NOT NULL,
-  `CMMC_Certificate` bool NOT NULL, 
-  `Application_ID` bigint(8) NOT NULL,
-  PRIMARY KEY (`Cert&Finance_ID`),
-  KEY `db_app_id` (`Application_ID`),
-  
-  CONSTRAINT `db_app_id` FOREIGN KEY (`Application_ID`) REFERENCES `applications` (`Application_ID`) ON UPDATE CASCADE
-)
+
 
 --address
 CREATE TABLE `Address` (
@@ -114,25 +102,10 @@ CREATE TABLE `Company_Information` (
    `Name` varchar NOT NULL,
    `Abbreviation` char NOT NULL, 
    PRIMARY KEY (`Country_ID`),
-   KEY `db_app_id` (Country_ID),
+   KEY `db_app_id` ('Country_ID'),
    )
    
-  --Application
-  CREATE TABLE `Application` (
-    `Application_ID` bigint(11) NOT NULL,
-    `First_Name` varchar NOT NULL,
-    `Middle_Name` varchar NOT NULL,
-    `Last_Name` varchar NOT NULL,
-    `Phone_Number` int(9) NOT NULL,
-    `Email` varchar NOT NULL,
-    `Company_Name` varchar NOT NULL,
-    `EIN_ID` int(9) NOT NULL,
-    `Entity_Type` int(9) NOT NULL,
-    `Company_Description` varchar NOT NULL,
-    `Certification & Financials` Bool NOT NULLm
-    PRIMARY KEY (Application_ID),
-    KEY `db_app_id` (Application_ID)
-    )
+
    
     
   
