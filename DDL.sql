@@ -1,3 +1,4 @@
+USE CSCI362;
 SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS Address;
 DROP TABLE IF EXISTS Application;
@@ -84,6 +85,7 @@ CREATE TABLE Country (
         Country_ID int(9) NOT NULL AUTO_INCREMENT,
         Abbreviation varchar(3) NOT NULL,
         Name varchar(50) NOT NULL,
+        Concern_or_not bool NOT NULL,
 CONSTRAINT Country_PK PRIMARY KEY (Country_ID));
 
 CREATE TABLE Address (
@@ -153,7 +155,7 @@ CREATE TABLE Cyber_Security_Clearence(
         Application_ID bigint(8) NOT NULL,
         Questions_ID varchar(5) NOT NULL,
         Administrative_Holds bool,
-        Answers bool,
+        Answers varchar(4) Check (Answers IN ('YES','NO')),
 CONSTRAINT Cyber_Security_Clearence_PK PRIMARY KEY (Application_ID,Questions_ID),
 CONSTRAINT Cyber_Security_Clearence_FK1 FOREIGN KEY (Application_ID) REFERENCES Application(Application_ID),
 CONSTRAINT Cyber_Security_Clearence_FK2 FOREIGN KEY (Questions_ID) REFERENCES Cyber_Security_Questions(Questions_ID));
@@ -206,16 +208,18 @@ CONSTRAINT Investors_PK PRIMARY KEY (Investor_ID),
 CONSTRAINT Investors_FK FOREIGN KEY (Country_ID) REFERENCES Country(Country_ID) ON UPDATE CASCADE);
 
 CREATE TABLE Funding(
-        Funding_ID bigint NOT NULL,
+        Funding_ID bigint NOT NULL AUTO_INCREMENT,
         Application_ID bigint(8) NOT NULL,
         RoundTypeint int,
         Investor_ID int,
         Number_Shares int,
         Capital_investment bigint,
         Ownership float,
+        Country_ID int(9),
 CONSTRAINT Funding_PK PRIMARY KEY (Funding_ID),
 CONSTRAINT Funding_FK1 FOREIGN KEY (Investor_ID) REFERENCES Investors(Investor_ID) ON UPDATE CASCADE,
-CONSTRAINT Funding_FK2 FOREIGN KEY (Application_ID) REFERENCES Application(Application_ID) ON UPDATE CASCADE);
+CONSTRAINT Funding_FK2 FOREIGN KEY (Application_ID) REFERENCES Application(Application_ID) ON UPDATE CASCADE,
+CONSTRAINT Funding_FK3 FOREIGN KEY (Country_ID) REFERENCES Country(Country_ID) ON UPDATE CASCADE);
 
 describe Address;
 describe Application;
